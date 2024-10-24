@@ -1,0 +1,55 @@
+#include <SPI.h>
+#include <MFRC522.h>
+
+#define SS_PIN 10
+#define RST_PIN 9
+
+MFRC522 mfrc522(SS_PIN, RST_PIN);  // Create MFRC522 instance.
+
+void setup() {
+  Serial.begin(9600);  // Initialize serial communications.
+  SPI.begin();          // Init SPI bus.
+  mfrc522.PCD_Init();   // Init MFRC522 card.
+}
+
+void loop() {
+  // Look for new cards.
+  if (mfrc522.PICC_IsNewCardPresent() && mfrc522.PICC_ReadCardSerial()) {
+    String rfidUid = "";
+    for (byte i = 0; i < mfrc522.uid.size; i++) {
+      rfidUid += String(mfrc522.uid.uidByte[i], HEX);
+    }
+    
+    // Send RFID UID to PHP server via Serial.
+    Serial.println(rfidUid);
+    
+    // Wait a bit before scanning again.
+    delay(1000);
+  }
+}
+
+
+#include <SoftwareSerial.h>
+
+SoftwareSerial mySerial(2, 3); // RX, TX pins for RFID reader
+
+void setup() {
+  Serial.begin(9600);   // Serial monitor
+  mySerial.begin(9600); // RFID reader module
+  
+  Serial.println("RFID Reader Ready");
+}
+
+void loop() {
+  if (mySerial.available() > 0) {
+    String rfidData = mySerial.readStringUntil('\n'); // Read RFID data
+    rfidData.trim(); // Remove any leading/trailing whitespace
+    
+    Serial.print("Scanned RFID: ");
+    Serial.println(rfidData);
+    
+    // Send RFID data to Python script via Serial
+    Serial.println(rfidData); // Send RFID data to Python script
+    delay(1000); // Delay to avoid multiple reads within a short time
+  }
+}
