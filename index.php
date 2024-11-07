@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
   <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
 
   <title>Homepage/Login</title>
-  <link rel="stylesheet" href="logn.css">
+  <link rel="stylesheet" href="rfid2/logn.css">
 </head>
 
 <body>
@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
     <form action="" method="POST">
       <h2 align="center">ST. CECILIA'S COLLEGE-CEBU, INC.</h2>
       <div class="text-center">
-        <img src="logo/logo.jpg" style="width:100px;height:100px">
+        <img src="rfid2/logo/logo.jpg" style="width:100px;height:100px">
         <br><br>
       </div>
       <h2>Login</h2>
@@ -106,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
       </div>
       <button type="submit" name="login">Log In</button>
       <div class="register">
-        <p>Don't have an account? <a href="register.php">Register</a></p>
+        <p>Don't have an account? <a href="rfid2/register.php">Register</a></p>
       </div>
     </form>
   </div>
