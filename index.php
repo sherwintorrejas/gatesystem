@@ -1,5 +1,5 @@
 <?php
-require_once 'includes/dbcon.php'; // Include the database connection file
+require_once 'rfid2/includes/dbcon.php'; // Include the database connection file
 
 session_start(); // Start session to use session variables
 
