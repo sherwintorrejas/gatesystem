@@ -41,13 +41,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
                 // Redirect based on user category
                 switch ($category) {
                     case 'HR':
-                        header("Location: HR/index.php");
+                        header("Location: rfid2/HR/index.php");
                         break;
                     case 'REGISTRAR':
-                        header("Location: Registrar/index.php");
+                        header("Location: rfid2/Registrar/index.php");
                         break;
                     case 'TECHNICAL SUPPORT':
-                        header("Location: Technical/index.php");
+                        header("Location: rfid2/Technical/index.php");
                         break;
                     default:
                         header("Location: index.php"); // Default redirect
